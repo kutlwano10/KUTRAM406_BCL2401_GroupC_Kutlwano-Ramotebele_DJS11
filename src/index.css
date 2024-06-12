@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -7,5 +8,121 @@
 body {
     background: black;
     color: white;
+    font-family: 'poppins';
 
+}
+
+/* NAVBAR SECTION */
+.navbar {
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    font-size: 14px;
+    color: #e5e5e5;
+    background-image: linear-gradient(180deg, rbga(0,0,0,0,0.7) 10%, transparent);
+    z-index: 1;
+
+}
+/* The left Navbar */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.navbar-left img {
+    width: 50px;
+}
+
+.navlink {
+    color: #e5e5e5;
+    text-decoration: none;
+}
+
+/* The right navbar */
+.navbar-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar-right .icons {
+    width: 20px;
+    cursor: pointer;
+}
+
+.navbar-right .profile {
+    border-radius: 4px;
+    width: 30px;
+}
+
+.navbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+
+.hero {
+    position: relative;
+}
+.banner-img {
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 75%);
+    -weblit-mask-image: linear-gradient(to right, transparent, black 75%);
+}
+
+.hero-caption {
+    position: absolute;
+    width: 100%;
+    padding-left: 6%;
+    bottom: 0;
+}
+.caption-img {
+    width: 90%;
+    max-width: 420px;
+    margin-bottom: 30px;
+}
+
+.caption-img p {
+    max-width: 700px;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+.hero-btns .btn img {
+    width: 25px;
+}
+.hero-btns .btn {
+    border: 0;
+    outline: 0;
+    padding: 8px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    background: #26C6D4;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.hero-btns .btn:hover {
+    background: #39e6f6;
+}
+
+.hero-btns .btn.dark-btn {
+    color: #fff;
+    background: #6d6d6eb3;
+}
+.hero-btns .btn.dark-btn:hover {
+    background: #6d6d6e66;
 }
