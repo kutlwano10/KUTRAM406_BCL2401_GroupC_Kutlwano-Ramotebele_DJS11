@@ -42,7 +42,7 @@ const ShowsTitleCards = () => {
 
   // const handleScroll = (event) =>{
   //   event.preventDefault();
-  //   cardsRef.current.scrollLeft +=event.deltaY;
+  //   cardsRef.current.scrollLeft += event.deltaY;
   // }
 
   // useEffect(()=>{
@@ -52,7 +52,7 @@ const ShowsTitleCards = () => {
   return (
     <div className="title-cards">
       <h2>Popular Shows</h2>
-      <div className="card-list" >
+      <div className="card-list"  >
         {showsCards}
       </div>
     </div>
