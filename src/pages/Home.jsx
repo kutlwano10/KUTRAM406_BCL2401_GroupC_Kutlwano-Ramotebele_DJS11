@@ -11,7 +11,7 @@ const Home = () => {
       <div className="hero">
         <img className="banner-img" src={heroBanner} alt="" />
         <div className="hero-caption">
-          <img className="caption-img" src={heroTitle} alt="" />
+          {/* <img className="caption-img" src={heroTitle} alt="" /> */}
           <p>
             Discovaring the accient knowledge of the long lost girl in the
             rivers of tales. The story of a mistery girl from the rural and
