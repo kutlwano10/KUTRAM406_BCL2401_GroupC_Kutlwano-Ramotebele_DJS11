@@ -9,7 +9,7 @@ const ShowsTitleCards = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch("https://podcast-api.netlify.app");
+        const res = await fetch("https://podcast-api.netlify.app/shows");
         const data = await res.json();
 
         /*created a varible that will sort the data in alphabetical order*/
