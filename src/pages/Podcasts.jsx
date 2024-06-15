@@ -8,7 +8,6 @@ const Podcasts = () => {
 
   /** it will get the values of the genres*/
   const genresFilter = searchParams.get("genres");
-  console.log(genresFilter)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,16 +56,16 @@ const Podcasts = () => {
     <div className="podcast-list-container">
       <h1>All Podcasts</h1>
       <div className="filter-genres-buttons">
-        <Link to="?genres=1">Personal Growth</Link>
-        <Link to="?genres=2">Investigative Journalism</Link>
-        <Link to="?genres=3">History</Link>
-        <Link to="?genres=4">Comedy</Link>
-        <Link to="?genres=5">Entertainment</Link>
-        <Link to="?genres=6">Business</Link>
-        <Link to="?genres=7">Fiction</Link>
-        <Link to="?genres=8">News</Link>
-        <Link to="?genres=9">Kids and Family</Link>
-        <Link to="?genres=.">clear </Link>
+        <button onClick={()=> setSearchParams({genres : 1})}>Personal Growth</button>
+        <button onClick={()=> setSearchParams({genres : 2})}>Investigative Journalism</button>
+        <button onClick={()=> setSearchParams({genres : 3})}>History</button>
+        <button onClick={()=> setSearchParams({genres : 4})}>Comedy</button>
+        <button onClick={()=> setSearchParams({genres : 5})}>Entertainment</button>
+        <button onClick={()=> setSearchParams({genres : 6})}>Business</button>
+        <button onClick={()=> setSearchParams({genres : 7})}>Fiction</button>
+        <button onClick={()=> setSearchParams({genres : 8})}>News</button>
+        <button onClick={()=> setSearchParams({genres : 9})}>Kids and Family</button>
+        <button onClick={()=> setSearchParams({genres : ''})}>clear </button>
       </div>
 
       <div className="podcast-card-list">{showsCards}</div>
