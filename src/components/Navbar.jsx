@@ -2,7 +2,7 @@ import React from 'react'
 import logo from "../assets/elvis-blue.png"
 import { Link, NavLink } from 'react-router-dom'
 import searchIcon from "../assets/search_icon.svg"
-import profileImg from "../assets/profile_img.png"
+import profileImg from "../assets/login-avatar.png"
 import caretIcon from "../assets/caret_icon.svg"
 
 const Navbar = () => {
@@ -10,9 +10,9 @@ const Navbar = () => {
     <div className='navbar'>
         <div className='navbar-left'>
             <img className='icons' src={logo} alt='Logo'/>
-            <NavLink className="navlink">Home</NavLink>
-            <NavLink className="navlink">Podcasts</NavLink>
-            <NavLink className="navlink">My Favorites</NavLink>
+            <NavLink className="navlink" to="/">Home</NavLink>
+            <NavLink className="navlink" to="/podcasts">Podcasts</NavLink>
+            <NavLink className="navlink" to="/favorites">My Favorites</NavLink>
         </div>
         <div className='navbar-right'>
             <img className='icons' src={searchIcon}/>
