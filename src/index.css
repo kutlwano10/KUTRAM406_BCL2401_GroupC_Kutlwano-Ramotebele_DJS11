@@ -1,383 +1,394 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: black;
-    color: white;
-    font-family: 'poppins';
-
+  background: black;
+  color: white;
+  font-family: "poppins";
 }
 .side-wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* NAVBAR SECTION */
 .navbar {
-    width: 100%;
-    padding: 20px 6%;
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 0; /**For Navbar to stay at the top*/
-    font-size: 14px;
-    color: #e5e5e5;
-    background-image: linear-gradient(180deg, rbga(0,0,0,0,0.7) 10%, transparent);
-    z-index: 1;
-    
-
+  width: 100%;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0; /**For Navbar to stay at the top*/
+  font-size: 14px;
+  color: #e5e5e5;
+  background-image: linear-gradient(
+    180deg,
+    rbga(0, 0, 0, 0, 0.7) 10%,
+    transparent
+  );
+  z-index: 1;
 }
 /* The left Navbar */
 .navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 50px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 .navbar-left img {
-    width: 50px;
+  width: 50px;
 }
 
 .navlink {
-    color: #f9f9f9;
-    text-decoration: none;
+  color: #f9f9f9;
+  text-decoration: none;
 }
 
 /* The right navbar */
 .navbar-right {
-    display: flex;
-    gap: 20px;
-    align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .navbar-right .icons {
-    width: 20px;
-    cursor: pointer;
+  width: 20px;
+  cursor: pointer;
 }
 
 .navbar-right .profile {
-    border-radius: 4px;
-    width: 30px;
+  border-radius: 4px;
+  width: 30px;
 }
 
 .navbar-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
 }
 
 /* HERO SECTION */
 
 .hero {
-    position: none;
+  position: none;
 }
 .banner-img {
-    width: 100%;
-    mask-image: linear-gradient(to right, transparent, black 75%);
-    -weblit-mask-image: linear-gradient(to right, transparent, black 75%);
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 75%);
+  -weblit-mask-image: linear-gradient(to right, transparent, black 75%);
 }
 
 .hero-caption {
-    position: absolute;
-    width: 100%;
-    padding-left: 6%;
-    bottom: 0;
+  position: absolute;
+  width: 100%;
+  padding-left: 6%;
+  bottom: 0;
 }
 .caption-img {
-    width: 100%;
-    max-width: 420px;
-    margin-bottom: 30px;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 30px;
 }
 
 .caption-img p {
-    max-width: 300px;
-    font-size: 17px;
-    margin-bottom: 20px;
+  max-width: 300px;
+  font-size: 17px;
+  margin-bottom: 20px;
 }
 
 .hero-btns {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 50px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 50px;
 }
 .hero-btns .btn img {
-    width: 25px;
+  width: 25px;
 }
 .hero-btns .btn {
-    border: 0;
-    outline: 0;
-    padding: 8px 20px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    border-radius: 4px;
-    background: #26C6D4;
-    cursor: pointer;
-    font-weight: 600;
+  border: 0;
+  outline: 0;
+  padding: 8px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  background: #26c6d4;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .hero-btns .btn:hover {
-    background: #39e6f6;
+  background: #39e6f6;
 }
 
 .hero-btns .btn.dark-btn {
-    color: #fff;
-    background: #6d6d6eb3;
+  color: #fff;
+  background: #6d6d6eb3;
 }
 .hero-btns .btn.dark-btn:hover {
-    background: #6d6d6e66;
+  background: #6d6d6e66;
 }
 
 /* SHOWS TITLE CARDS SECTION  */
 
 .title-cards {
-    margin-top: 50px;
-    margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 .title-cards h2 {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 .card-list {
-    display: flex;
-    gap: 10px;
-    overflow-x: scroll; /*To Implement a scrolling method for shows*/
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll; /*To Implement a scrolling method for shows*/
 }
 .card-list::-webkit-scrollbar {
-    display: none; /*Hide the scrollbar*/
+  display: none; /*Hide the scrollbar*/
 }
 
-
 .card-list .card {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    border-radius: 4px;
-    overflow: hidden;
-    flex-shrink: 0; /* Ensures the card does not shrink */
-    background: #000; /* Optional: Adds a background color to help with visibility */
+  position: relative;
+  width: 300px;
+  height: 200px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0; /* Ensures the card does not shrink */
+  background: #000; /* Optional: Adds a background color to help with visibility */
 }
 
 .card-list .card img {
-    
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the entire image is visible without being cut off */
-    border-radius: 4px; /* Apply border-radius to the image */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the entire image is visible without being cut off */
+  border-radius: 4px; /* Apply border-radius to the image */
 }
-
-
 
 /* PODCAST LIST CONTAINER */
 
-.podcast-list-container  {
-    margin-top: 100px;
-    padding: 20px 10%;
-    
+.podcast-list-container {
+  margin-top: 100px;
+  padding: 20px 10%;
 }
 
 .podcast-card-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px; /* Adjust gap between items as needed */
-    padding: 10px; /* Optional padding around the container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Adjust gap between items as needed */
+  padding: 10px; /* Optional padding around the container */
 }
 
 .podcast-card-list .show-card {
-    position: relative;
-    width: 250px;
-    overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
-    cursor: pointer;
-    border-radius: 4px;
+  position: relative;
+  width: 250px;
+  overflow: hidden; /* Ensures the pseudo-element doesn't overflow */
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .podcast-card-list .show-card p {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: white;
-    margin: 0;
-    z-index: 1;  /* Make sure the text is above the gradient */
-    
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  margin: 0;
+  z-index: 1; /* Make sure the text is above the gradient */
 }
 
 .podcast-card-list .show-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 4px;
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
 }
 
 .podcast-card-list .show-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 50%; /* Adjust the height as needed */
-    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
-    border-radius: 4px; /* Match the border-radius of the card */
-    z-index: 0; /* Ensure it is below the text */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%; /* Adjust the height as needed */
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+  border-radius: 4px; /* Match the border-radius of the card */
+  z-index: 0; /* Ensure it is below the text */
 }
 
 .podcast-card-list img {
-
-    flex: 1 1 200px; /* Allows items to grow, shrink, and set an initial basis */
-    max-width: 250px; /* Ensures images do not exceed a certain width */
-    width: 100%; /* Ensures images take up the full width of their container */
-    height: auto; /* Maintains aspect ratio of images */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+  flex: 1 1 200px; /* Allows items to grow, shrink, and set an initial basis */
+  max-width: 250px; /* Ensures images do not exceed a certain width */
+  width: 100%; /* Ensures images take up the full width of their container */
+  height: auto; /* Maintains aspect ratio of images */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
- 
+
 .select-genre {
-    display: flex;
-    margin-top: 10px;
-    
+  display: flex;
+  margin-top: 10px;
 }
 
-.filter-genres-buttons button{
-    border: 0;
-    outline: 0;
-    padding: 8px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    border-radius: 4px;
-    background: #26C6D4;
-    cursor: pointer;
-    font-weight: 600;
-    color: #fff;
-
-    
-    
+.filter-genres-buttons button {
+  border: 0;
+  outline: 0;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  background: #26c6d4;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
 }
 
 .filter-genres-buttons {
-    text-align: center;
-    display: flex;
-    gap: 10px;
-    overflow-x: scroll; 
-    
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
 }
 .filter-genres-buttons::-webkit-scrollbar {
-    display: none; /*Hide the scrollbar*/
+  display: none; /*Hide the scrollbar*/
 }
-
-
 
 /* FAVORITES LIST CONTAINER */
 
 .favorites-list-container {
-    margin-top: 100px;
-    /* background-color: #26C6D4; */
-    /* min-height: 100vh; */
+  margin-top: 100px;
+  /* background-color: #26C6D4; */
+  /* min-height: 100vh; */
 }
 
-/* .buttons-container {
-    
-} */
+/*PODCAST DETAILS CONTAINER*/
+.podcast-details-container {
+  margin-top: 100px;
+  padding: 20px 10%;
+}
 
-
-
+.podcast-details {
+  display: flex;
+}
+.podcast-details img {
+  width: 250px;
+  height: 250px;
+}
+.podcast-seasons-container {
+  display: flex;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+}
+.podcast-seasons {
+  display: flex;
+  flex-direction: column;
+}
+.podcast-seasons img {
+  width: 250px;
+}
+.loading {
+  display: grid;
+  place-items: center;
+}
 /* MEDIA QUERIES */
 
 /* General styles for small screens */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 10px 4%;
-        font-size: 12px;
-    }
-    
-    .navbar-left {
-        gap: 20px;
-    }
-    
-    .navbar-right {
-        gap: 10px;
-    }
-    
-    .hero-caption {
-        padding-left: 4%;
-    }
+  .navbar {
+    padding: 10px 4%;
+    font-size: 12px;
+  }
 
-    .caption-img {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .caption-img p {
-        font-size: 14px;
-    }
+  .navbar-left {
+    gap: 20px;
+  }
 
-    .hero-btns {
-        flex-direction: column;
-        gap: 5px;
-    }
+  .navbar-right {
+    gap: 10px;
+  }
 
-    .hero-btns .btn {
-        padding: 6px 15px;
-        font-size: 13px;
-    }
+  .hero-caption {
+    padding-left: 4%;
+  }
 
-    .card-list .card {
-        width: 200px;
-        height: 150px;
-    }
+  .caption-img {
+    width: 100%;
+    max-width: 300px;
+  }
 
-    .podcast-card-list .show-card {
-        width: 200px;
-    }
+  .caption-img p {
+    font-size: 14px;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .hero-btns .btn {
+    padding: 6px 15px;
+    font-size: 13px;
+  }
+
+  .card-list .card {
+    width: 200px;
+    height: 150px;
+  }
+
+  .podcast-card-list .show-card {
+    width: 200px;
+    margin-top: 100px;
+    padding: 20px 10%;
+  }
 }
 
 /* General styles for very small screens */
 @media (max-width: 480px) {
-    .navbar {
-        padding: 5px 2%;
-        font-size: 10px;
-    }
+  .navbar {
+    padding: 5px 2%;
+    font-size: 10px;
+  }
 
-    .navbar-left {
-        gap: 10px;
-    }
+  .navbar-left {
+    gap: 10px;
+  }
 
-    .navbar-right {
-        gap: 5px;
-    }
+  .navbar-right {
+    gap: 5px;
+  }
 
-    .caption-img {
-        max-width: 200px;
-    }
+  .caption-img {
+    max-width: 200px;
+  }
 
-    .caption-img p {
-        font-size: 12px;
-    }
+  .caption-img p {
+    font-size: 12px;
+  }
 
-    .hero-btns .btn {
-        padding: 4px 10px;
-        font-size: 11px;
-        width: 100px;
-        
-    }
-    .hero-btns {
-        display: flex;
-    }
+  .hero-btns .btn {
+    padding: 4px 10px;
+    font-size: 11px;
+    width: 100px;
+  }
+  .hero-btns {
+    display: flex;
+  }
 
-    
+  .card-list .card {
+    width: 150px;
+    height: 100px;
+  }
 
-    .card-list .card {
-        width: 150px;
-        height: 100px;
-    }
-
-    .podcast-card-list .show-card {
-        width: 150px;
-    }
+  .podcast-card-list .show-card {
+    width: 150px;
+  }
 }
