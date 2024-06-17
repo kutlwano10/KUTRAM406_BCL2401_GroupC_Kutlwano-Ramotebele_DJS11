@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import heroBanner from "../assets/hero_banner.jpg";
 import heroTitle from "../assets/hero_title.png";
 import playIcon from "../assets/play_icon.png";
@@ -6,6 +7,25 @@ import infoIcon from "../assets/info_icon.png";
 import ShowsTitleCards from "../components/HomePodcasts";
 
 const Home = () => {
+  const [shows, setShows] = useState()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("https://podcast-api.netlify.app");
+        const data = await res.json();
+        console.log(data);
+        setShows(data);
+      } catch (error) {
+        console.error("Fetch error:" + error);
+      }
+    };
+    fetchData();
+  }, []);
+
+ 
+
+
   return (
     <div className="home">
       <div className="hero">

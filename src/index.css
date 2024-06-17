@@ -176,9 +176,9 @@ body {
 
 /* PODCAST LIST CONTAINER */
 
-.podcast-list-container h1{
+.podcast-list-container  {
     margin-top: 100px;
-    padding: 20px 6%;
+    padding: 20px 10%;
     
 }
 
@@ -235,7 +235,41 @@ body {
     height: auto; /* Maintains aspect ratio of images */
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
+ 
+.select-genre {
+    display: flex;
+    margin-top: 10px;
+    
+}
 
+.filter-genres-buttons button{
+    border: 0;
+    outline: 0;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    background: #26C6D4;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+
+    
+    
+}
+
+.filter-genres-buttons {
+    text-align: center;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll; 
+    
+}
+.filter-genres-buttons::-webkit-scrollbar {
+    display: none; /*Hide the scrollbar*/
+}
 
 
 
@@ -251,7 +285,6 @@ body {
     
 } */
 
-/*PODCAST CARD LIST*/
 
 
 /* MEDIA QUERIES */
