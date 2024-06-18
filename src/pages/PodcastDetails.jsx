@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const PodcastDetails = () => {
@@ -20,13 +20,17 @@ const PodcastDetails = () => {
   }, [id]);
 
   if (!show) {
-    return <div className="loading"><h1>Loading ...</h1></div>;
+    return (
+      <div className="loading">
+        <h1>Loading ...</h1>
+      </div>
+    );
   }
 
   return (
     <div className="podcast-details-container">
       <h1>Podcast</h1>
-      <div >
+      <div>
         <h2>{show.title}</h2>
         <div className="podcast-details">
           <img src={show.image} alt={show.title} />
@@ -38,12 +42,22 @@ const PodcastDetails = () => {
 
       {show.seasons && show.seasons.length > 0 && (
         <div className="podcast-seasons-container">
-          
+            
           {show.seasons.map((season, index) => (
             <div className="podcast-seasons" key={index}>
               <h3>{season.title}</h3>
               <img src={season.image} alt={season.title} />
               <p>{season.description}</p>
+              {/* The episodes */}
+              <h1>Episodes</h1>
+              {season.episodes.map((episode) => (
+                <div key={episode.id}>
+                  <h4>{episode.title}</h4>
+                  <img src={season.image} alt=""/>
+                  
+
+                </div>
+              ))}
             </div>
           ))}
         </div>

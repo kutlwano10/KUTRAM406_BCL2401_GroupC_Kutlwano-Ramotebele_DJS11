@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const ShowsTitleCards = () => {
+const HomePodcasts = () => {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -37,10 +38,10 @@ const ShowsTitleCards = () => {
    * Maps out shows imgs and titles along with there ids
    */
   const showsCards = shows.map((show) => (
-    <div className="card" key={show.id}>
+    <Link to={`/podcasts/${show.id}`} className="card" key={show.id}>
       <img src={show.image} alt="" />
       <p>{show.title}</p>
-    </div>
+    </Link>
   ));
 
   return (
@@ -51,4 +52,4 @@ const ShowsTitleCards = () => {
   );
 };
 
-export default ShowsTitleCards;
+export default HomePodcasts;
