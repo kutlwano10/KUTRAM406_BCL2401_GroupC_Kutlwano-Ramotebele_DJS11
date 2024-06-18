@@ -276,21 +276,26 @@ body {
 
 .podcast-details {
   display: flex;
+  gap: 30px;
+  margin: 30px 0;
 }
 .podcast-details img {
   width: 250px;
   height: 250px;
+  
 }
 .podcast-seasons-container {
   display: flex;
   text-align: center;
   display: flex;
-  gap: 10px;
+  gap: 50px;
   overflow-x: scroll;
+  margin: 30px 0;
 }
 .podcast-seasons {
   display: flex;
   flex-direction: column;
+
 }
 .podcast-seasons img {
   width: 250px;
@@ -298,6 +303,15 @@ body {
 .loading {
   display: grid;
   place-items: center;
+}
+.podcast-seasons .episodes {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+.podcast-seasons .episodes img {
+    width: 70px;
 }
 /* MEDIA QUERIES */
 

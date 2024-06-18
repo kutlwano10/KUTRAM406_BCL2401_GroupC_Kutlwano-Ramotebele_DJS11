@@ -29,7 +29,7 @@ const PodcastDetails = () => {
 
   return (
     <div className="podcast-details-container">
-      <h1>Podcast</h1>
+      
       <div>
         <h2>{show.title}</h2>
         <div className="podcast-details">
@@ -37,12 +37,12 @@ const PodcastDetails = () => {
           <p>{show.description}</p>
         </div>
       </div>
-      <h2>Seasons</h2>
+      <h1>Seasons</h1>
       {/* Displaying Podcast seasons */}
 
       {show.seasons && show.seasons.length > 0 && (
         <div className="podcast-seasons-container">
-            
+
           {show.seasons.map((season, index) => (
             <div className="podcast-seasons" key={index}>
               <h3>{season.title}</h3>
@@ -51,10 +51,10 @@ const PodcastDetails = () => {
               {/* The episodes */}
               <h1>Episodes</h1>
               {season.episodes.map((episode) => (
-                <div key={episode.id}>
-                  <h4>{episode.title}</h4>
-                  <img src={season.image} alt=""/>
+                <div className="episodes" key={episode.id}>
                   
+                  <img src={season.image} alt=""/>
+                  <h6>{episode.title}</h6>
 
                 </div>
               ))}
