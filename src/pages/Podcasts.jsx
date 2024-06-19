@@ -5,33 +5,35 @@ import { Link, useSearchParams, useParams } from "react-router-dom";
 const Podcasts = () => {
   const [shows, setShows] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [loading ,setLoading] = useState(false)
-  const [sortedShows, setSortedShows] = useState([])
-  const params = useParams()
-  
+  const [loading, setLoading] = useState(false);
+  const [sortedShows, setSortedShows] = useState([]);
+  const params = useParams();
 
   /** it will get the values of the genres*/
   const genresFilter = searchParams.get("genres");
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true)
+      setLoading(true);
       try {
         const res = await fetch(`https://podcast-api.netlify.app/`);
         const data = await res.json();
-        setShows(data);
-        sortShows(data)
+        /** Setting the Podcasts to show in alphabetical order */
+        const defaultSortedShows = data.sort((a, b) => {
+          const titleA = a.title.toUpperCase();
+          const titleB = b.title.toUpperCase();
+          return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+        });
+        setShows(defaultSortedShows);
+        setSortedShows(data);
       } catch (error) {
         console.error("Fetch error:" + error);
-      }finally {
-        setLoading(false)
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
-
-
-
   /**
    * genresFilter is the value of "genres" which is
    * an array[numbers] -that respresent the genre names
@@ -44,14 +46,15 @@ const Podcasts = () => {
    * if it is , i want to filter out from the shows and check
    * if the genres key includes the integer/number
    */
-  const displayPodcasts = genreFilterNumber
+  const displayFilteredPodcasts = genreFilterNumber
     ? shows.filter((genre) => genre.genres.includes(genreFilterNumber))
     : shows;
 
   /**After it filters out the same number
    * i maped the filtered ones and displayed them
    */
-  const showsCards = displayPodcasts.map((show) => (
+
+  const showsCards = displayFilteredPodcasts.map((show) => (
     <div className="show-card" key={show.id}>
       <Link to={`/podcasts/${show.id}`}>
         <img src={show.image} alt="" />
@@ -60,60 +63,73 @@ const Podcasts = () => {
     </div>
   ));
 
-  const sortShowsZA =()=> {
-    const sortedPodcats = shows.sort((a,b)=> {
-      const titleA = a.title.toUpperCase()
-      const titleB = b.title.toUpperCase()
-      return titleA > titleB ? -1 : titleA < titleB ? 1 : 0
+  /**Sorting From Z - A
+   * using spread to make a copy of shows
+   */
+  const sortShowsZA = () => {
+    const copiedShows = [...shows];
+    copiedShows.sort((a, b) => {
+      const titleA = a.title.toUpperCase();
+      const titleB = b.title.toUpperCase();
+      return titleA > titleB ? -1 : titleA < titleB ? 1 : 0;
+    });
+    setShows(copiedShows);
+  };
 
-    })
-    setSortedShows(sortedPodcats);
+  const sortShowsAZ = () => {
+    const sortedPodcasts = [...shows].sort((a, b) => {
+      const titleA = a.title.toUpperCase();
+      const titleB = b.title.toUpperCase();
+      return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+    });
 
-  }
+    setShows(sortedPodcasts);
+  };
 
-  const sortShowsAZ =()=> {
-    const sortedPodcats = shows.sort((a,b)=> {
-      const titleA = a.title.toUpperCase()
-      const titleB = b.title.toUpperCase()
-      return titleA < titleB ? -1 : titleA > titleB ? 1 : 0
-
-    })
-    setSortedShows(sortedPodcats);
-
-  }
-
-  
   return (
-    <div className="podcast-list-container">
-      <h1>All Podcasts</h1>
-      <button onClick={sortShowsAZ}>Sort A-Z</button>
-      <button onClick={sortShowsZA}>SORT Z-A</button>
-      <div className="select-genre">
-        <h2>Select Genre</h2>
-        <button onClick={() => setSearchParams({ genres: "" })}>clear </button>
+    <>
+      <div className="podcast-list-container">
+        <h1>All Podcasts</h1>
+        <button onClick={sortShowsAZ}>Sort A-Z</button>
+        <button onClick={sortShowsZA}>SORT Z-A</button>
+        <div className="select-genre">
+          <h2>Select Genre</h2>
+          <button onClick={() => setSearchParams({ genres: "" })}>
+            clear{" "}
+          </button>
+        </div>
+        <div className="filter-genres-buttons">
+          <button onClick={() => setSearchParams({ genres: 1 })}>
+            Personal Growth
+          </button>
+          <button onClick={() => setSearchParams({ genres: 2 })}>
+            Investigative Journalism
+          </button>
+          <button onClick={() => setSearchParams({ genres: 3 })}>
+            History
+          </button>
+          <button onClick={() => setSearchParams({ genres: 4 })}>Comedy</button>
+          <button onClick={() => setSearchParams({ genres: 5 })}>
+            Entertainment
+          </button>
+          <button onClick={() => setSearchParams({ genres: 6 })}>
+            Business
+          </button>
+          <button onClick={() => setSearchParams({ genres: 7 })}>
+            Fiction
+          </button>
+          <button onClick={() => setSearchParams({ genres: 8 })}>News</button>
+          <button onClick={() => setSearchParams({ genres: 9 })}>
+            Kids and Family
+          </button>
+        </div>
+        {loading ? (
+          <h1>Loading ...</h1>
+        ) : (
+          <div className="podcast-card-list">{showsCards}</div>
+        )}
       </div>
-      <div className="filter-genres-buttons">
-        <button onClick={() => setSearchParams({ genres: 1 })}>
-          Personal Growth
-        </button>
-        <button onClick={() => setSearchParams({ genres: 2 })}>
-          Investigative Journalism
-        </button>
-        <button onClick={() => setSearchParams({ genres: 3 })}>History</button>
-        <button onClick={() => setSearchParams({ genres: 4 })}>Comedy</button>
-        <button onClick={() => setSearchParams({ genres: 5 })}>
-          Entertainment
-        </button>
-        <button onClick={() => setSearchParams({ genres: 6 })}>Business</button>
-        <button onClick={() => setSearchParams({ genres: 7 })}>Fiction</button>
-        <button onClick={() => setSearchParams({ genres: 8 })}>News</button>
-        <button onClick={() => setSearchParams({ genres: 9 })}>
-          Kids and Family
-        </button>
-      </div>
-      {loading ? (<h1>Loading ...</h1>) : <div className="podcast-card-list">{showsCards}</div>}
-      
-    </div>
+    </>
   );
 };
 

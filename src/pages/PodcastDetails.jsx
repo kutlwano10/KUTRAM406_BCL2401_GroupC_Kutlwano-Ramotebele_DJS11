@@ -32,7 +32,10 @@ const PodcastDetails = () => {
           <div>
             <h2>{show.title}</h2>
             <div className="podcast-details">
+              <div>
               <img src={show.image} alt={show.title} />
+              <p>{show.updated}</p>
+              </div>
               <p>{show.description}</p>
             </div>
           </div>
