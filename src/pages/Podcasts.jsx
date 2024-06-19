@@ -75,11 +75,30 @@ const Podcasts = () => {
     });
     setShows(copiedShows);
   };
-
   const sortShowsAZ = () => {
     const sortedPodcasts = [...shows].sort((a, b) => {
       const titleA = a.title.toUpperCase();
       const titleB = b.title.toUpperCase();
+      return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+    });
+
+    setShows(sortedPodcasts);
+  };
+
+  const newUpdatedShows = () => {
+    const sortedPodcasts = [...shows].sort((a, b) => {
+      const titleA = a.updated;
+      const titleB = b.updated;
+      return titleA < titleB ? 1 : titleA > titleB ? -1 : 0;
+    });
+
+    setShows(sortedPodcasts);
+  };
+
+  const olderUpdatedShows = () => {
+    const sortedPodcasts = [...shows].sort((a, b) => {
+      const titleA = a.updated;
+      const titleB = b.updated;
       return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
     });
 
@@ -92,10 +111,14 @@ const Podcasts = () => {
         <h1>All Podcasts</h1>
         <button onClick={sortShowsAZ}>Sort A-Z</button>
         <button onClick={sortShowsZA}>SORT Z-A</button>
+        <div>
+          <button onClick={newUpdatedShows}>New Shows</button>
+          <button onClick={olderUpdatedShows}>Older Shows</button>
+        </div>
         <div className="select-genre">
           <h2>Select Genre</h2>
           <button onClick={() => setSearchParams({ genres: "" })}>
-            clear{" "}
+            All Shows
           </button>
         </div>
         <div className="filter-genres-buttons">
@@ -120,7 +143,7 @@ const Podcasts = () => {
           </button>
           <button onClick={() => setSearchParams({ genres: 8 })}>News</button>
           <button onClick={() => setSearchParams({ genres: 9 })}>
-            Kids and Family
+            Kids & Family
           </button>
         </div>
         {loading ? (
