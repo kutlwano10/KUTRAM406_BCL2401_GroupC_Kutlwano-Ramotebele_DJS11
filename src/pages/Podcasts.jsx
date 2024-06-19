@@ -5,6 +5,8 @@ import { Link, useSearchParams, useParams } from "react-router-dom";
 const Podcasts = () => {
   const [shows, setShows] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [loading ,setLoading] = useState(false)
+  const [sortedShows, setSortedShows] = useState([])
   const params = useParams()
   
 
@@ -13,17 +15,22 @@ const Podcasts = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
       try {
         const res = await fetch(`https://podcast-api.netlify.app/`);
         const data = await res.json();
-        console.log(data);
         setShows(data);
+        sortShows(data)
       } catch (error) {
         console.error("Fetch error:" + error);
+      }finally {
+        setLoading(false)
       }
     };
     fetchData();
   }, []);
+
+
 
   /**
    * genresFilter is the value of "genres" which is
@@ -53,9 +60,34 @@ const Podcasts = () => {
     </div>
   ));
 
+  const sortShowsZA =()=> {
+    const sortedPodcats = shows.sort((a,b)=> {
+      const titleA = a.title.toUpperCase()
+      const titleB = b.title.toUpperCase()
+      return titleA > titleB ? -1 : titleA < titleB ? 1 : 0
+
+    })
+    setSortedShows(sortedPodcats);
+
+  }
+
+  const sortShowsAZ =()=> {
+    const sortedPodcats = shows.sort((a,b)=> {
+      const titleA = a.title.toUpperCase()
+      const titleB = b.title.toUpperCase()
+      return titleA < titleB ? -1 : titleA > titleB ? 1 : 0
+
+    })
+    setSortedShows(sortedPodcats);
+
+  }
+
+  
   return (
     <div className="podcast-list-container">
       <h1>All Podcasts</h1>
+      <button onClick={sortShowsAZ}>Sort A-Z</button>
+      <button onClick={sortShowsZA}>SORT Z-A</button>
       <div className="select-genre">
         <h2>Select Genre</h2>
         <button onClick={() => setSearchParams({ genres: "" })}>clear </button>
@@ -79,8 +111,8 @@ const Podcasts = () => {
           Kids and Family
         </button>
       </div>
-
-      <div className="podcast-card-list">{showsCards}</div>
+      {loading ? (<h1>Loading ...</h1>) : <div className="podcast-card-list">{showsCards}</div>}
+      
     </div>
   );
 };

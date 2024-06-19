@@ -301,8 +301,13 @@ body {
   width: 250px;
 }
 .loading {
-  display: grid;
-  place-items: center;
+  /* display: grid; */
+  /* place-items: center; */
+  top: 50%;
+  left: 50%;
+  
+
+
 }
 .podcast-seasons .episodes {
     display: flex;
@@ -315,94 +320,3 @@ body {
 }
 /* MEDIA QUERIES */
 
-/* General styles for small screens */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px 4%;
-    font-size: 12px;
-  }
-
-  .navbar-left {
-    gap: 20px;
-  }
-
-  .navbar-right {
-    gap: 10px;
-  }
-
-  .hero-caption {
-    padding-left: 4%;
-  }
-
-  .caption-img {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .caption-img p {
-    font-size: 14px;
-  }
-
-  .hero-btns {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .hero-btns .btn {
-    padding: 6px 15px;
-    font-size: 13px;
-  }
-
-  .card-list .card {
-    width: 200px;
-    height: 150px;
-  }
-
-  .podcast-card-list .show-card {
-    width: 200px;
-    margin-top: 100px;
-    padding: 20px 10%;
-  }
-}
-
-/* General styles for very small screens */
-@media (max-width: 480px) {
-  .navbar {
-    padding: 5px 2%;
-    font-size: 10px;
-  }
-
-  .navbar-left {
-    gap: 10px;
-  }
-
-  .navbar-right {
-    gap: 5px;
-  }
-
-  .caption-img {
-    max-width: 200px;
-  }
-
-  .caption-img p {
-    font-size: 12px;
-  }
-
-  .hero-btns .btn {
-    padding: 4px 10px;
-    font-size: 11px;
-    width: 100px;
-  }
-  .hero-btns {
-    display: flex;
-  }
-
-  .card-list .card {
-    width: 150px;
-    height: 100px;
-  }
-
-  .podcast-card-list .show-card {
-    width: 150px;
-  }
-}
