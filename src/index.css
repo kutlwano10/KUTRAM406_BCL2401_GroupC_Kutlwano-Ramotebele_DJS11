@@ -318,5 +318,18 @@ body {
 .podcast-seasons .episodes img {
     width: 70px;
 }
-/* MEDIA QUERIES */
+
+/*Audio Player*/
+
+  .audio-player {
+    position: fixed;
+    bottom: 0;
+    
+    background-color: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 

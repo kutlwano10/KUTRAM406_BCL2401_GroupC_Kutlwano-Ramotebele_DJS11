@@ -6,6 +6,7 @@ const PodcastDetails = () => {
   const [show, setShow] = useState(null);
   const [loading, setLoading] = useState(true);
   const [expandedDescriptions, setExpandedDescriptions] = useState(false);
+  const [currentEpisode, setCurrentEpisode] = useState(null);
 
   const { id } = useParams();
   useEffect(() => {
@@ -23,10 +24,18 @@ const PodcastDetails = () => {
     fetchData();
   }, [id]);
 
+  /** HANDLE THE MORE & LESS of description when clicked */
   const handleDescriptionToggle = () => {
     setExpandedDescriptions((prev) => !prev);
   };
 
+  const handleEpisodeClick = (episode) => {
+    setCurrentEpisode({
+      ...episode,
+      title: episode.title,
+      image: episode.image,
+    });
+  };
   return (
     <div className="podcast-details-container">
       {loading ? (
@@ -44,12 +53,10 @@ const PodcastDetails = () => {
                 {expandedDescriptions
                   ? show.description
                   : `${show.description.slice(0, 150)}...`}
-                  <button onClick={handleDescriptionToggle}>
-                {expandedDescriptions ? "Show Less" : "Read More"}
-              </button>
-
+                <button onClick={handleDescriptionToggle}>
+                  {expandedDescriptions ? "Show Less" : "Read More"}
+                </button>
               </p>
-              
             </div>
           </div>
           <h1>Seasons</h1>
@@ -65,7 +72,12 @@ const PodcastDetails = () => {
                   {/* THE EPISODES*/}
                   <h1>Episodes</h1>
                   {season.episodes.map((episode) => (
-                    <div className="episodes" key={episode.id}>
+                    <div
+                      className="episodes"
+                      key={episode.id}
+                      onClick={() => handleEpisodeClick(episode)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <img src={season.image} alt="" />
                       <h6>{episode.title}</h6>
                     </div>
@@ -75,6 +87,17 @@ const PodcastDetails = () => {
             </div>
           )}
         </>
+      )}
+      {currentEpisode && (
+        <div className="audio-player">
+
+          <h4>Now Playing: {currentEpisode.title}</h4>
+          <image src={currentEpisode.image}/>
+          <audio controls autoPlay>
+            <source src={currentEpisode.file} type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </div>
       )}
     </div>
   );

@@ -109,11 +109,11 @@ const Podcasts = () => {
     <>
       <div className="podcast-list-container">
         <h1>All Podcasts</h1>
-        <button onClick={sortShowsAZ}>Sort A-Z</button>
-        <button onClick={sortShowsZA}>SORT Z-A</button>
+        <button onClick={sortShowsAZ}>A-Z</button>
+        <button onClick={sortShowsZA}>Z-A</button>
         <div>
-          <button onClick={newUpdatedShows}>New Shows</button>
-          <button onClick={olderUpdatedShows}>Older Shows</button>
+          <button onClick={newUpdatedShows}>NEWEST</button>
+          <button onClick={olderUpdatedShows}>OLDEST</button>
         </div>
         <div className="select-genre">
           <h2>Select Genre</h2>
