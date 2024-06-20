@@ -1,6 +1,11 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import backButton from "../assets/back-button.png";
+import savepng from "../assets/save.png";
+import Favorites from "./Favorites";
+
+// import AudioPlayer from "../components/AudioPlayer"
 
 const PodcastDetails = () => {
   const [show, setShow] = useState(null);
@@ -36,12 +41,32 @@ const PodcastDetails = () => {
       image: episode.image,
     });
   };
+
+  /** HANDLE FAVORITES CLICK */
+  const [favorites, setFavorites] = useState([]);
+
+  const handleFavoriteClick = (episode, event) => {
+    event.stopPropagation()
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.some((fav) => fav.id === episode.id)) {
+        return prevFavorites.filter((fav) => fav.id !== episode.id);
+      } else {
+        return [...prevFavorites, episode];
+      }
+    });
+  };
+
+  const isFavorite = (episode) => {
+    return favorites.some(fav => fav.id === episode.id)
+  }
+
   return (
     <div className="podcast-details-container">
       {loading ? (
         <h1>Loading ...</h1>
       ) : (
         <>
+        <Link to='..' relative="path"><img src={backButton} alt=""/></Link>
           <div>
             <h2>{show.title}</h2>
             <div className="podcast-details">
@@ -75,11 +100,18 @@ const PodcastDetails = () => {
                     <div
                       className="episodes"
                       key={episode.id}
-                      onClick={() => handleEpisodeClick(episode)}
                       style={{ cursor: "pointer" }}
+                      onClick={() => handleEpisodeClick(episode)}
                     >
-                      <img src={season.image} alt="" />
+                      <img
+                       
+                        src={season.image}
+                        alt=""
+                      />
                       <h6>{episode.title}</h6>
+                      <button onClick={() => handleFavoriteClick(episode)}>
+                        {isFavorite(episode) ? '❤️' : '♡'}
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -90,9 +122,8 @@ const PodcastDetails = () => {
       )}
       {currentEpisode && (
         <div className="audio-player">
-
           <h4>Now Playing: {currentEpisode.title}</h4>
-          <image src={currentEpisode.image}/>
+          <image src={currentEpisode.image} />
           <audio controls autoPlay>
             <source src={currentEpisode.file} type="audio/mpeg" />
             Your browser does not support the audio element.

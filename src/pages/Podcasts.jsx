@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams, useParams } from "react-router-dom";
-
+import backButton from "../assets/back-button.png"
 const Podcasts = () => {
   const [shows, setShows] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -107,7 +107,9 @@ const Podcasts = () => {
 
   return (
     <>
+    
       <div className="podcast-list-container">
+      <Link to='..' relative="path"><img src={backButton} alt=""/></Link>
         <h1>All Podcasts</h1>
         <button onClick={sortShowsAZ}>A-Z</button>
         <button onClick={sortShowsZA}>Z-A</button>
