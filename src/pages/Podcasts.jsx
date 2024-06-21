@@ -150,7 +150,7 @@ const Podcasts = () => {
           </button>
         </div>
         {loading ? (
-          <div><CircularProgress/></div>
+          <div className="loading"><CircularProgress/></div>
         ) : (
           <div className="podcast-card-list">{showsCards}</div>
         )}

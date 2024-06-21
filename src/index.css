@@ -305,6 +305,7 @@ body {
   place-items: center;
   
   
+  
 
 
 }
@@ -340,7 +341,57 @@ body {
     width: 60%;
     
   }
-  /* AudioPlayer.css */
+
+
+  /*MEDIA QUERIES*/
+
+  /* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 4%;
+  }
+  .navbar-left {
+    display: none;
+  }
+  .navbar-right {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+  }
+}
+
+/* Media Queries for Hamburger Menu */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: black;
+  padding: 20px 4%;
+  z-index: 2;
+}
+
+.dropdown-menu.active {
+  display: flex;
+}
+
+.dropdown-link {
+  color: #f9f9f9;
+  text-decoration: none;
+}
 
 
 

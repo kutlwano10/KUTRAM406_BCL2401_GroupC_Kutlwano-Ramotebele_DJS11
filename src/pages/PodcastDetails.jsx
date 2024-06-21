@@ -89,7 +89,7 @@ const [selectedSeason, setSelectedSeason] = useState(null)
   return (
     <div className="podcast-list-container">
       {loading ? (
-        <div><CircularProgress/></div>
+        <div className="loading"><CircularProgress/></div>
       ) : (
         <>
           <Link to=".." relative="path">

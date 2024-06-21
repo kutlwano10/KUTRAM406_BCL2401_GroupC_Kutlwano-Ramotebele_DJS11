@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 
 const HomePodcasts = () => {
   const [shows, setShows] = useState([]);
@@ -31,7 +32,7 @@ const HomePodcasts = () => {
   }, []);
 
   if (loading) {
-    return <h1>Loading ...</h1>;
+    return <div className="loading"><CircularProgress/></div>;
   }
 
   /**
