@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useSearchParams, useParams } from "react-router-dom";
 import backButton from "../assets/back-button.png"
+import { CircularProgress } from "@mui/material";
 const Podcasts = () => {
   const [shows, setShows] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -149,7 +150,7 @@ const Podcasts = () => {
           </button>
         </div>
         {loading ? (
-          <h1>Loading ...</h1>
+          <div><CircularProgress/></div>
         ) : (
           <div className="podcast-card-list">{showsCards}</div>
         )}

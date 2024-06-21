@@ -87,9 +87,9 @@ const [selectedSeason, setSelectedSeason] = useState(null)
   }
 
   return (
-    <div className="podcast-details-container">
+    <div className="podcast-list-container">
       {loading ? (
-        <div>Loading ...</div>
+        <div><CircularProgress/></div>
       ) : (
         <>
           <Link to=".." relative="path">
@@ -132,9 +132,9 @@ const [selectedSeason, setSelectedSeason] = useState(null)
                       className="episodes"
                       key={episode.episode}
                       style={{ cursor: "pointer" }}
-                      onClick={() => handleEpisodeClick(episode)}
+                      
                     >
-                      <img src={season.image} alt="" />
+                      <img src={season.image} alt="" onClick={() => handleEpisodeClick(episode)} />
                       <h6>{episode.title}</h6>
                       <button onClick={() => handleFavoriteClick(episode)}>
                         {isFavorite(episode) ? "❤️" : "♡"}
