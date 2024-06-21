@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import backButton from "../assets/back-button.png";
+import { CircularProgress } from "@mui/material";
 import savepng from "../assets/save.png";
 import Favorites from "./Favorites";
 
@@ -33,6 +34,7 @@ const PodcastDetails = () => {
   };
 
   const handleEpisodeClick = (episode) => {
+    console.log("I am clicked :" + episode )
     setCurrentEpisode({
       ...episode,
       title: episode.title,
@@ -43,20 +45,42 @@ const PodcastDetails = () => {
   /** HANDLE FAVORITES CLICK */
   const [favorites, setFavorites] = useState([]);
 
-  const handleFavoriteClick = (episode, event) => {
-    event.stopPropagation();
-    setFavorites((prevFavorites) => {
-      if (prevFavorites.some((fav) => fav.id === episode.id)) {
-        return prevFavorites.filter((fav) => fav.id !== episode.id);
-      } else {
-        return [...prevFavorites, episode];
-      }
-    });
+  useEffect(() => {
+    // Load favorites from localStorage on component mount
+    const storedFavorites = JSON.parse(localStorage.getItem('favoriteEpisodes')) || [];
+    setFavorites(storedFavorites);
+  }, []);
+
+  const handleFavoriteClick = (episode) => {
+    // Check if the episode is already in favorites
+    const isFavorite = favorites.some((fav) => fav.title === episode.title);
+
+    if (isFavorite) {
+      // Remove from favorites
+      const updatedFavorites = favorites.filter((fav) => fav.title !== episode.title);
+      setFavorites(updatedFavorites);
+      // Update localStorage with updated favorites
+      localStorage.setItem('favoriteEpisodes', JSON.stringify(updatedFavorites));
+    } else {
+      // Add to favorites
+      const updatedFavorites = [...favorites, episode];
+      setFavorites(updatedFavorites);
+      // Update localStorage with updated favorites
+      localStorage.setItem('favoriteEpisodes', JSON.stringify(updatedFavorites));
+    }
   };
 
   const isFavorite = (episode) => {
-    return favorites.some((fav) => fav.id === episode.id);
+    return favorites.some((fav) => fav.title === episode.title);
   };
+
+  // const handleEpisodeClick = (episode) => {
+  //   // Handle click logic for episode
+  //   console.log('Clicked episode:', episode);
+  // };
+
+
+  
 const [selectedSeason, setSelectedSeason] = useState(null)
   const HandleSeasonClick =(index)=> {
     setSelectedSeason(selectedSeason === index ? null : index)
@@ -65,7 +89,7 @@ const [selectedSeason, setSelectedSeason] = useState(null)
   return (
     <div className="podcast-details-container">
       {loading ? (
-        <h1>Loading ...</h1>
+        <div>Loading ...</div>
       ) : (
         <>
           <Link to=".." relative="path">
@@ -95,18 +119,18 @@ const [selectedSeason, setSelectedSeason] = useState(null)
           {show.seasons && show.seasons.length > 0 && (
             <div className="podcast-seasons-container">
               {show.seasons.map((season, index) => (
-                <div className="podcast-seasons" key={index}>
+                <div className="podcast-seasons" key={season.season}>
                   <h3>{season.title}</h3>
                   <img src={season.image} alt={season.title} onClick={()=>HandleSeasonClick(index)}/>
 
                   {/* THE EPISODES*/}
-                  {selectedSeason === index && (
+                  {selectedSeason  === index && (
                   <>
                   <h1>Episodes</h1>
                   {season.episodes.map((episode) => (
                     <div
                       className="episodes"
-                      key={episode.id}
+                      key={episode.episode}
                       style={{ cursor: "pointer" }}
                       onClick={() => handleEpisodeClick(episode)}
                     >
